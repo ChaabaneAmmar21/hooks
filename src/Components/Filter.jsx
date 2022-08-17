@@ -2,6 +2,7 @@ import Rating from "@mui/material/Rating";
 import Box from "@mui/material/Box";
 import {useState} from "react";
 
+
 function Filter (props) {
    
     
@@ -14,7 +15,7 @@ function Filter (props) {
         value={title}
          onChange={(e) => {
             setTitle(e.target.value);
-            props.Filter(title,rating)
+        
           }} />
         <Box
                   sx={{
@@ -27,9 +28,13 @@ function Filter (props) {
                     value={rating}
                     onChange={(event, newValue) => {
                       setRating(newValue);
-                      props.Filter(title,rating)
+                      
                     }}
                   />{" "}
+                  <button
+              onClick={()=>props.filter(title,rating)}
+          
+            >search</button>
                   </Box>
        
       </div>

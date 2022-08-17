@@ -39,20 +39,26 @@ function App() {
     rating:3,
   }]
   const [listFilm,SetlistFilm]=useState(data)
-  const Addfilm=(newfilm)=>SetlistFilm(
-   [ ...listFilm,newfilm]
+  const [list,setList]=useState(listFilm)
+  const Addfilm=(newfilm,close)=>{SetlistFilm(
+   [...listFilm,newfilm]
+   );setList(
+     [ ...list,newfilm]
+    
   )
- const [list,setList]=useState(listFilm)
-  const filter=(name,nst)=>{
+  close();
+}
+ 
+   const filter=(name,nst)=>{
 
-    setList(listFilm.filter((e)=>e.title.toUpperCase().includes(name.toUpperCase()) && e.rating >= nst))
- }
+     setList(listFilm.filter((e)=>e.title.toUpperCase().includes(name.toUpperCase()) && e.rating >= nst))
+  }
  
   return (
     <div className="container" >
       
      <div style={{display:"flex" ,justifyContent:"space-between"}}>
-     <Filter Filter={filter}/>
+     <Filter filter={filter}/>
      <AddCard Addfilm={Addfilm}/> 
      </div>
    

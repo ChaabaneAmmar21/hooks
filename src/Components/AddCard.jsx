@@ -26,9 +26,9 @@ const style = {
 
 export default function NestedModal(props) {
   const [rating, setRating] = React.useState(0);
-  const [Title, setTitle] = React.useState("");
+  const [title, settitle] = React.useState("");
   const [posterURL, setPosterURL] = React.useState("");
-  const [description, setDescription] = React.useState("");
+  const [ description, setdescription] = React.useState("");
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -77,9 +77,9 @@ export default function NestedModal(props) {
                   type="text"
                   placeholder="name Film"
                   required
-                  value={Title}
+                  value={title}
                   onChange={(e) => {
-                    setTitle(e.target.value);
+                    settitle(e.target.value);
                   }}
                 />
               </Form.Group>
@@ -91,7 +91,7 @@ export default function NestedModal(props) {
                   required
                   value={description}
                   onChange={(e) => {
-                    setDescription(e.target.value);
+                    setdescription(e.target.value);
                   }}
                 />
               </Form.Group>
@@ -128,7 +128,7 @@ export default function NestedModal(props) {
                 style={{ width: "100%" }}
                 className="primary"
                 onClick={() =>
-                  props.Addfilm({ Title, description, posterURL, rating })
+                  props.Addfilm({ title, description, posterURL, rating },handleClose)
                 }
               >
                 Add film
